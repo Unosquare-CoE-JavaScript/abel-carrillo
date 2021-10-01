@@ -49,7 +49,7 @@ console.log('fetch with POST');
 
 // ********************************
 const moviePlanets = function (movieNum) {
-    let url = 'https://swapi.dev/api/films/';
+    const url = 'https://swapi.dev/api/films/';
 
     $.getJSON(url + movieNum + '/')
         .then(function (response) {

@@ -1,3 +1,4 @@
+'use strict';
 // ***********************
 // Promise with all and race methods
 
@@ -65,8 +66,7 @@ p1.then(function (val) {
 
 console.log('see this is asynch code');
 
-//
-
+// *********************
 var MAINAPP = (function (nsp) {
     'use strict';
 
