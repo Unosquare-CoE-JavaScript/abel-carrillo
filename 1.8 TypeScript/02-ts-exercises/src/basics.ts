@@ -8,6 +8,7 @@ function add(n1: number, n2: number, showResult: boolean, phrase: string) {
     } else {
       return result;
     }
+    return;
   }
   
   const number1 = 5; // 5.0
@@ -16,4 +17,10 @@ function add(n1: number, n2: number, showResult: boolean, phrase: string) {
   const resultPhrase = 'Result is: ';
   
   add(number1, number2, printResult, resultPhrase);
+
+  const btn = document.querySelector('button')!;
+
+btn.addEventListener('click', function() {
+    console.log('Clicked!');
+})
   

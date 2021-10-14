@@ -1,7 +1,7 @@
+"use strict";
 /* const person: {
     name: string
 } = { */
-
 /* const person: {
     name: string;
     hobbies: string[];
@@ -12,13 +12,12 @@
     // Tuple
     role: [3, 'dev']
 }; */
-
-enum Role {
-    ADMIN = "ADMIN",
-    READ_ONLY = 22,
-    AUTHOR = "AUTHOR",
-}
-
+var Role;
+(function (Role) {
+    Role["ADMIN"] = "ADMIN";
+    Role[Role["READ_ONLY"] = 22] = "READ_ONLY";
+    Role["AUTHOR"] = "AUTHOR";
+})(Role || (Role = {}));
 const person = {
     name: "Abel",
     hobbies: ["Drive", "tvSeries", "Sports"],
@@ -29,15 +28,11 @@ const person = {
 // person.role.push('admin');
 // person.role[1] = '4';
 console.log(person.name);
-
-let arrayOfStrings: string[];
-
+let arrayOfStrings;
 for (const hobbie of person.hobbies) {
     console.log(hobbie);
 }
-
 /** Nested objects **********************/
-
 /* const product = {
   id: 'abc1',
   price: 12.99,
@@ -57,46 +52,32 @@ for (const hobbie of person.hobbies) {
     description: string;
   }
 } */
-
 /** Union types */
-
-function combine(input1: number | string, input2: number | string) {
+function combine(input1, input2) {
     let result;
     if (typeof input1 === "number" && input2 === "number") {
         result = input1 + input2;
-    } else {
+    }
+    else {
         result = input1.toString() + input2.toString();
     }
     return result;
 }
-
-const combinedAges = combine(20,30);
+const combinedAges = combine(20, 30);
 const combinedNames = combine('Max ', 'Anna');
-
 console.log(`Ages: ${combinedAges}\nNames: ${combinedNames}`);
-
-/** Custom types  */
-
-type Combinable = number | string;
-
-function combine2(input1: Combinable, input2:Combinable) {}
-
+// function combine2(input1: Combinable, input2:Combinable) {}
 /** Functions and callbacks */
-
-function addAndHandle(n1: number, n2: number, callback: (num: number) => void) {
+function addAndHandle(n1, n2, callback) {
     const result = n1 + n2;
     callback(result);
 }
-
 addAndHandle(3, 4, (result) => {
-console.log(result);
-
+    console.log(result);
 });
-
 /** "never" type */
-
-function generateError(msg: string, code: number): never {
-    throw {message: msg, errorCode: code};
+function generateError(msg, code) {
+    throw { message: msg, errorCode: code };
 }
-
 generateError('Error!', 123);
+//# sourceMappingURL=functions-types.js.map
