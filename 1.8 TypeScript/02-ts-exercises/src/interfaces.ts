@@ -1,4 +1,9 @@
-interface Greeting {
+interface Named {
+    readonly firstName: string;
+    outputName?: string; // optional
+}
+
+interface Greeting extends Named {
     firstName: string;
     greet(phrase: string): void;
 }
@@ -28,3 +33,17 @@ let user1: Greeting;
 user1 = new Person('Abel')
 
 user1.greet('Hi! I am');
+
+
+/** Interfaces as function types */
+
+/* interface AddFn {
+    (a: number, b: number) : number;
+}
+
+let add2: AddFn;
+
+add2 = (n1: number, n2: number) => {
+    return n1 + n2;
+}; */
+
