@@ -1,0 +1,8 @@
+# Ignore node_modules
+1.8 TypeScript/02-ts-exercises/node_modules
+1.8 TypeScript/03-drag-and-drop/node_modules
+1.8 TypeScript/04-libraries/node_modules
+1.8 TypeScript/04-libraries/dist
+1.8 TypeScript/05-react-ts/node_modules
+1.8 TypeScript/05-react-ts/public
+1.8 TypeScript/06-nodejs-express-ts/node_modules
