@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from 'src/app/header/header.component';
@@ -12,6 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
+import { environment } from 'src/environments/environment';
+import { RecipeEffects } from './recipes/store/recipe.effects';
 
 @NgModule({
     declarations: [AppComponent, HeaderComponent],
@@ -20,7 +23,9 @@ import { AuthEffects } from './auth/store/auth.effects';
         HttpClientModule,
         AppRoutingModule,
         StoreModule.forRoot(fromApp.appReducer),
-        EffectsModule.forRoot([AuthEffects]),
+        EffectsModule.forRoot([AuthEffects, RecipeEffects]),
+        StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+        StoreRouterConnectingModule.forRoot(),
         SharedModule,
         CoreModule,
     ],
