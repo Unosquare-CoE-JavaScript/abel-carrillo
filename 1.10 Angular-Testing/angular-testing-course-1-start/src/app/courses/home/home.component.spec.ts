@@ -1,5 +1,4 @@
 import {
-  async,
   ComponentFixture,
   fakeAsync,
   flush,
@@ -87,7 +86,7 @@ describe("HomeComponent", () => {
     expect(tabs.length).toBe(2, "Expected to find 2 tabs");
   });
 
-  it("should display advanced courses when tab clicked", (done: DoneFn) => {
+  it("should display advanced courses when tab clicked fakeAsync", fakeAsync(() => {
     coursesService.findAllCourses.and.returnValue(of(setupCourses()));
 
     fixture.detectChanges();
@@ -97,7 +96,20 @@ describe("HomeComponent", () => {
     click(tabs[1]);
     fixture.detectChanges();
 
-    setTimeout(() => {
+    flush();
+
+    const cardTitles = el.queryAll(
+      By.css(".mat-tab-body-active .mat-card-title")
+    );
+
+    expect(cardTitles.length).toBeGreaterThan(0, "Could not find card titles");
+    expect(cardTitles[0].nativeElement.textContent).toContain(
+      "Angular Security Course"
+    );
+
+    console.log(cardTitles[0].nativeElement.textContent);
+
+    /*   setTimeout(() => {
       const cardTitles = el.queryAll(By.css(".mat-tab-body-active .mat-card-title"));
 
       expect(cardTitles.length).toBeGreaterThan(
@@ -112,6 +124,37 @@ describe("HomeComponent", () => {
       
 
       done();
-    }, 1000);
-  });
+    }, 1000); */
+  }));
+
+  it(
+    "should display advanced courses when tab clicked async",
+    waitForAsync(() => {
+        // ********************* fakeAsync is a better option
+      coursesService.findAllCourses.and.returnValue(of(setupCourses()));
+
+      fixture.detectChanges();
+      const tabs = el.queryAll(By.css(".mat-tab-label"));
+      //el.nativeElement.click(tabs[1]);
+
+      click(tabs[1]);
+      fixture.detectChanges();
+
+      fixture.whenStable().then(() => {
+        console.log("Called whenStable()");
+
+        const cardTitles = el.queryAll(
+          By.css(".mat-tab-body-active .mat-card-title")
+        );
+
+        expect(cardTitles.length).toBeGreaterThan(
+          0,
+          "Could not find card titles"
+        );
+        expect(cardTitles[0].nativeElement.textContent).toContain(
+          "Angular Security Course"
+        );
+      });
+    })
+  );
 });
