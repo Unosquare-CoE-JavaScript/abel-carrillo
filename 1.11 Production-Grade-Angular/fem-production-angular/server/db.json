@@ -1,0 +1,36 @@
+{
+    "widgets": [
+        {
+            "id": "1",
+            "title": "Remote Mock Widget 01",
+            "description": "pending..."
+        },
+        {
+            "id": "2",
+            "title": "Remote Mock Widget 02",
+            "description": "pending..."
+        },
+        {
+            "id": "3",
+            "title": "Remote Mock Widget 03",
+            "description": "pending..."
+        }
+    ],
+    "items": [
+        {
+            "id": "1",
+            "title": "Remote Mock Item 01",
+            "description": "pending..."
+        },
+        {
+            "id": "2",
+            "title": "Remote Mock Item 02",
+            "description": "pending..."
+        },
+        {
+            "id": "3",
+            "title": "Remote Mock Item 03",
+            "description": "pending..."
+        }
+    ]
+}
